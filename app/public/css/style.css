@@ -34,14 +34,20 @@ h2 {
     font-size: 30px;
 }
 
+h3 {
+    font-weight: bold;
+    font-size: 25px;
+}
+
 main h1 {
     font-weight: bold;
     font-family: 'Noto Serif', serif;
 }
 
- main h3, h5 {
-    font-weight: 40px;
+ main h5 {
+    /* font-weight: 10px; */
     font-family: 'Noto Serif', serif;
+    font-size: 20px;
 }
 
 #head-nav-links {
