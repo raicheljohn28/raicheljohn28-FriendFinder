@@ -1,0 +1,63 @@
+body {
+    width: 75%;
+   margin: 0px auto;
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+   font-family: 'Noto Serif', serif;
+}
+
+header {
+    height: 100px;
+    font-family: 'Noto Serif', serif;
+    font-size: 50%;
+    font-weight: bold;
+}
+
+.fa-4x {
+    font-size: 10em;
+}
+
+#logo {
+    font-size: 45px;
+}
+
+header > nav {
+    height: 100%;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+main h1 {
+    font-weight: bold;
+    font-family: 'Noto Serif', serif;
+}
+
+ main h3, h5 {
+    font-weight: 40px;
+    font-family: 'Noto Serif', serif;
+}
+
+#head-nav-links {
+    margin-right: 50px;
+    margin-top: 20px;
+}
+
+.mainpanel{
+   margin: 50px;
+}
+
+#mainpanel-content {
+    margin: 50px;
+    font-size: 20px;
+}
+
+.footer {
+    text-align: center;
+}

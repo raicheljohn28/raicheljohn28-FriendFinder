@@ -1,0 +1,25 @@
+{
+  "name": "raicheljohn28-FriendFinder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "htmlRoutes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raicheljohn28/raicheljohn28-FriendFinder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raicheljohn28/raicheljohn28-FriendFinder/issues"
+  },
+  "homepage": "https://github.com/raicheljohn28/raicheljohn28-FriendFinder#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "path": "^0.12.7"
+  }
+}

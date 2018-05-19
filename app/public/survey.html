@@ -2,24 +2,28 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Survey</title>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="/reset.css">
-    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> -->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
     <header>
         <nav>
-            <div class="nav-wrapper orange accent-2">
+            <div class="nav-wrapper #ef5350 red lighten-1">
                 <i class="fa fa-users fa-4x" aria-hidden="true"></i>
                 <a href="home.html" class="brand-logo" id="logo">Friend Finder</a>
                 <ul class="right hide-on-med-and-down" id="head-nav-links">
@@ -42,7 +46,7 @@
                         <h1>Survey Questions</h1>
                         <div class="divider"></div>
 
-                        <h3>Choose the option that matches yourself</h3>
+                        <h3>About Yourself</h3>
 
                         <div class="input-field col s6">
                             <h5>Name(Required)</h5>
@@ -197,7 +201,7 @@
         </div>
     </main>
 
-    <footer class="page-footer orange accent-2">
+    <footer class="page-footer #ef5350 red lighten-1">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
@@ -217,9 +221,9 @@
                 </div>
             </div>
         </div>
-        <div class="footer-copyright">
+        <div class="footer">
             <div class="container">
-                © 2018 entertainment
+                ©Copyright 2018 
             </div>
         </div>
     </footer>
@@ -233,12 +237,66 @@
         </div>
 
         <div class="modal-footer">
-            <a href="/survey" class="modal-action modal-close waves-effect waves-green btn-flat">Want to take the survey again?</a>
+            <a href="survey.html" class="modal-action modal-close waves-effect waves-green btn-flat">Want to take the survey again?</a>
         </div>
+    </div>
 
-        <script type="text/javascript">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // $("select").material_select();
+            $('select').attr("class", "browser-default");
 
-        </script>
+            $("modal").modal({
+                dismissible: false,
+                opacity: .5,
+                inDuration: 300,
+                outDuration: 200,
+                startingTop: '4%',
+                endingTop: '10%'
+            });
+        });
+
+        //Activating Submit button
+        $("#submitButton").on("click", function (event) {
+            event.preventDefault();
+
+            //Collecting User Inputs
+            var userInput = {
+                name: $("#userName").val().trim(),
+                photo: $("#userPhoto").val().trim(),
+                score: [
+                    $("#question1").val().trim(),
+                    $("#question2").val().trim(),
+                    $("#question3").val().trim(),
+                    $("#question4").val().trim(),
+                    $("#question5").val().trim(),
+                    $("#question6").val().trim(),
+                    $("#question7").val().trim(),
+                    $("#question8").val().trim(),
+                    $("#question9").val().trim(),
+                    $("#question10").val().trim()
+
+                ]
+
+            };
+
+            // console.log("User Input = " + JSON.stringify(userInput));
+
+            //Adding user input to the friends list
+            $.post("/api/friends", userInput)
+                .done(function (data) {
+                    // console.log("response" + JSON.stringify(data));
+
+                    //Set the name and image values
+                    $("#userMatch").text(data.matchName);
+                    $("#userMatchImage").attr("src", data.matchImage);
+
+                    //Open the modal dialog
+                    $("#modal1").modal(open);
+                });
+        });
+
+    </script>
 
 </body>
 
